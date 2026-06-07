@@ -40,11 +40,13 @@ async def _notify_vk(bot: Bot, chat: AvitoChat) -> None:
     raw_text = msg.text or "(без текста)"
     preview = raw_text if len(raw_text) <= _MAX_MSG_LEN else raw_text[:_MAX_MSG_LEN] + "..."
 
+    chat_url = f"https://www.avito.ru/profile/messenger/channel/{chat.id}"
     text = (
         f"💬 Новое сообщение на Авито!\n\n"
         f"👤 Клиент: {chat.buyer_name or 'Неизвестен'}\n"
         f"📦 Объявление: {chat.item_title or 'Неизвестно'}\n\n"
-        f"✉️ {preview}"
+        f"✉️ {preview}\n\n"
+        f"🔗 {chat_url}"
     )
     users = get_notifiable_users()
     for user in users:
