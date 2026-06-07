@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import re
 
 from vkbottle.bot import Bot
 
@@ -37,7 +38,7 @@ _MAX_MSG_LEN = 200
 
 async def _notify_vk(bot: Bot, chat: AvitoChat) -> None:
     msg = chat.last_message
-    raw_text = msg.text or "(без текста)"
+    raw_text = re.sub(r"https?://\S+", "", msg.text or "").strip() or "(без текста)"
     preview = raw_text if len(raw_text) <= _MAX_MSG_LEN else raw_text[:_MAX_MSG_LEN] + "..."
 
     chat_url = f"https://www.avito.ru/profile/messenger/channel/{chat.id}"
