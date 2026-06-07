@@ -1,0 +1,15 @@
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: avito_notification
+    restart: always
+    env_file: .env
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - ./docker_volumes/data:/app/data
+      - ./docker_volumes/logs:/app/logs
+volumes:
+  data:

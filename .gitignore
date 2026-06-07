@@ -1,0 +1,37 @@
+# Окружение
+.env
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# База данных
+*.db
+*.sqlite3
+
+# Логи
+logs/
+*.log
+
+# vkbottle runtime
+.vkbottle/
+
+# Docker volumes
+docker_volumes/
+
+# IDE
+.idea/
+.vscode/
+*.DS_Store
+.claude
+CLAUDE.md
+
+# Avito API документация (большой файл, не нужен в репо)
+avito.txt
